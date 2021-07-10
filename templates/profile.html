@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block body %}
+ <div class="container my-3">
+   <h1 class='my-3 text-center alert alert-primary'>Profile</h1>
+   {% if blog %}
+   {% for user in blog %}
+    <div class="card text-center">
+      <div class="card-header">
+        <strong>{{user.title}}</strong>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Best Reference Of {{user.title}}</h5>
+        <p class="card-text">{{user.desc}}</p>
+        <a href="{% url 'delete' user.id %}" class="btn btn-danger btn-sm">Delete</a>
+      </div>
+      <div class="card-footer text-muted">
+        {{user.date}}
+      </div>
+    </div><br>
+   {% endfor %}
+   {% else %}
+    <h5 class="text-center mt-3">No Blogs Has Been Posted By You. Post Some Blogs To See Your Blogs.</h5>
+    <div class="d-flex justify-content-center">
+      <a class="my-3 btn btn-success text-center" href="{% url 'dashboard' %}">Dashboard</a>
+    </div>
+  {% endif %}
+ </div>
+{% endblock %}

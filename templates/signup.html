@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container my-4">
+  <h2>SignUp To Became An Author</h2>
+  <hr />
+ <form action="" method="POST" accept-charset="utf-8">
+   {% csrf_token %}
+   {% for fm in form %}
+    {{fm.label_tag}} {{fm}} {{fm.erorrs|striptags}}
+   {% endfor %}
+   <input type="submit" value="SignUp" class='btn btn-primary mt-2' />
+   <a href="{% url 'login' %}" class='btn btn-primary mt-2'>Login</a>
+ </form>
+</div>
+{% endblock %}

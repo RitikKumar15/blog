@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block body %}
+ <div class="container">
+   {% if messages %}
+    {% for msg in messages %}
+     <div class="alert alert-success alert-dismissible fade show ">
+       {{msg}}
+     </div>
+    {% endfor %}
+   {% endif %}
+  <h3 class='my-4 text-center alert alert-primary'>Magic Blog</h3>
+  {% if users %}
+   {% for user in users %}
+    <div class="card text-center">
+      <div class="card-header">
+        <strong>{{user.title}}</strong>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Best Reference Of {{user.title}}</h5>
+        <p class="card-text">{{user.desc}}</p>
+      </div>
+      <div class="card-footer mt-2 text-muted">
+        {{user.date}}
+      </div>
+    </div><br>
+   {% endfor %}
+  {% endif %}
+</div>
+{% endblock %}
